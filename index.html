@@ -1,1 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts Explained</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #6ab1ea;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a8d8ea;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h2 {
+            color: #6ab1ea;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #6ab1ea;
+            padding-bottom: 10px;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+        }
+        
+        .interactive-demo {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        button {
+            background: #6ab1ea;
+            color: #0f2027;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px 0;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #4a9ad4;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #6ab1ea;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .email-validation {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .result {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .valid {
+            background: #2e7d32;
+            display: block;
+        }
+        
+        .invalid {
+            background: #c62828;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #a8d8ea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Concepts Explained</h1>
+            <p class="subtitle">Learn JavaScript fundamentals with interactive examples</p>
+        </header>
+        
+        <div class="content-grid">
+            <div class="card">
+                <h2>What is JavaScript?</h2>
+                <p>JavaScript is a client-side scripting language used to make web pages dynamic, interactive, and user-friendly.</p>
+                <p>It runs inside the web browser without requiring any separate compiler.</p>
+                <div class="code-example">
+                    // Simple JavaScript example<br>
+                    console.log("Hello, JavaScript!");
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Variables & Data Types</h2>
+                <p>Variables store data values. JavaScript has dynamic types.</p>
+                <div class="code-example">
+                    let name = "John"; // String<br>
+                    const age = 30; // Number<br>
+                    var isStudent = false; // Boolean<br>
+                    let colors = ["red", "green"]; // Array<br>
+                    let person = {name: "John", age: 30}; // Object
+                </div>
+                <div class="interactive-demo">
+                    <button onclick="showVariableTypes()">Show Data Types</button>
+                    <p id="variableOutput"></p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Functions</h2>
+                <p>Functions are blocks of code designed to perform a specific task.</p>
+                <div class="code-example">
+                    function greet(name) {<br>
+                    &nbsp;&nbsp;return "Hello, " + name;<br>
+                    }<br><br>
+                    // Arrow function (ES6)<br>
+                    const multiply = (a, b) => a * b;
+                </div>
+                <div class="interactive-demo">
+                    <input type="text" id="nameInput" placeholder="Enter your name">
+                    <button onclick="greetUser()">Greet Me</button>
+                    <p id="greetOutput"></p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Conditional Statements</h2>
+                <p>Conditionals perform different actions based on different conditions.</p>
+                <div class="code-example">
+                    let time = 14;<br><br>
+                    if (time < 12) {<br>
+                    &nbsp;&nbsp;console.log("Good morning!");<br>
+                    } else if (time < 18) {<br>
+                    &nbsp;&nbsp;console.log("Good afternoon!");<br>
+                    } else {<br>
+                    &nbsp;&nbsp;console.log("Good evening!");<br>
+                    }
+                </div>
+                <div class="interactive-demo">
+                    <input type="number" id="timeInput" placeholder="Enter hour (0-23)" min="0" max="23">
+                    <button onclick="checkTime()">Check Time</button>
+                    <p id="timeOutput"></p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>DOM Manipulation</h2>
+                <p>The Document Object Model (DOM) represents the page structure as a tree of objects.</p>
+                <div class="code-example">
+                    // Change text content<br>
+                    document.getElementById("demo").innerHTML = "Hello DOM!";<br><br>
+                    // Change style<br>
+                    document.getElementById("demo").style.color = "red";
+                </div>
+                <div class="interactive-demo">
+                    <button onclick="changeDom()">Change DOM</button>
+                    <p id="domOutput">This element will change.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Event Handling</h2>
+                <p>JavaScript can respond to events like clicks, mouse movements, and keyboard input.</p>
+                <div class="code-example">
+                    // Using addEventListener<br>
+                    document.getElementById("myBtn").addEventListener("click", function() {<br>
+                    &nbsp;&nbsp;alert("Button clicked!");<br>
+                    });
+                </div>
+                <div class="interactive-demo">
+                    <button id="eventButton">Click Me!</button>
+                    <p id="eventOutput">Event result will appear here.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="email-validation">
+            <h2>Email Validation Example</h2>
+            <p>Enter an email address to validate its format:</p>
+            <input type="text" id="emailInput" placeholder="Enter email address">
+            <button onclick="validateEmail()">Validate Email</button>
+            <div id="emailResult" class="result"></div>
+        </div>
+    </div>
 
+    <footer>
+        <p>JavaScript Concepts Explained - Interactive Learning Page</p>
+    </footer>
+
+    <script>
+        // Variables and Data Types Demo
+        function showVariableTypes() {
+            const output = document.getElementById('variableOutput');
+            output.innerHTML = `
+                <strong>Variable Examples:</strong><br>
+                String: ${typeof "Hello"}<br>
+                Number: ${typeof 42}<br>
+                Boolean: ${typeof true}<br>
+                Array: ${typeof [1, 2, 3]}<br>
+                Object: ${typeof {name: "John"}}
+            `;
+        }
+        
+        // Functions Demo
+        function greetUser() {
+            const name = document.getElementById('nameInput').value || 'Guest';
+            document.getElementById('greetOutput').textContent = `Hello, ${name}! Welcome to JavaScript.`;
+        }
+        
+        // Conditional Statements Demo
+        function checkTime() {
+            const time = parseInt(document.getElementById('timeInput').value);
+            const output = document.getElementById('timeOutput');
+            
+            if (isNaN(time)) {
+                output.textContent = "Please enter a valid hour (0-23)";
+                return;
+            }
+            
+            if (time < 12) {
+                output.textContent = "Good morning!";
+            } else if (time < 18) {
+                output.textContent = "Good afternoon!";
+            } else {
+                output.textContent = "Good evening!";
+            }
+        }
+        
+        // DOM Manipulation Demo
+        function changeDom() {
+            const output = document.getElementById('domOutput');
+            output.textContent = "DOM successfully changed!";
+            output.style.color = "#6ab1ea";
+            output.style.fontWeight = "bold";
+        }
+        
+        // Event Handling Demo
+        document.getElementById('eventButton').addEventListener('click', function() {
+            document.getElementById('eventOutput').textContent = "Button clicked! Event handled successfully.";
+        });
+        
+        // Email Validation Demo
+        function validateEmail() {
+            const email = document.getElementById('emailInput').value;
+            const result = document.getElementById('emailResult');
+            
+            // Regular expression for email validation
+            const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            
+            if (regex.test(email)) {
+                result.textContent = ". email address!";
+                result.className = "result valid";
+            } else {
+                result.textContent = "Invalid email address!";
+                result.className = "result invalid";
+            }
+        }
+    </script>
+</body>
+</html>
